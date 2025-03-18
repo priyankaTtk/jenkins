@@ -21,6 +21,7 @@ pipeline {
          stage('Code Analysis') {
             steps {
                 echo 'Performing code analysis...'
+                sh 'npm run lint || exit 1' 
             }
         }
         stage('Security Scan') {
