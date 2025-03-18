@@ -21,10 +21,10 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 echo 'Running SonarScanner...'
-                //sh 'C:/sonar-scanner/bin/sonar-scanner.bat' // For Windows
-                sh 'D:/sonar/sonar-scanner-7.0.2.4839-windows-x64/bin/sonar-scanner'
+                bat '"D:\\sonar\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat"'
             }
         }
+
         stage('Security Scan') {
             steps {
                 echo 'Running security scan...'
