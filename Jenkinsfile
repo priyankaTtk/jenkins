@@ -20,8 +20,9 @@ pipeline {
         }
         stage('Code Analysis') {
             steps {
-                echo 'Performing code analysis...'
-                sh 'sonar-scanner'
+                echo 'Running SonarScanner...'
+                //sh 'C:/sonar-scanner/bin/sonar-scanner.bat' // For Windows
+                sh 'D:/sonar/sonar-scanner-7.0.2.4839-windows-x64/bin/sonar-scanner'
             }
         }
         stage('Security Scan') {
