@@ -18,6 +18,8 @@
   "homepage": "https://github.com/priyankaTtk/jenkins#readme",
   "description": "",
   "devDependencies": {
+    "eslint": "^9.22.0",
+    "install": "^0.13.0",
     "jest": "^29.7.0"
   }
 }
