@@ -20,10 +20,11 @@ pipeline {
         }
          stage('Code Analysis') {
             steps {
-                echo 'Performing code analysis...'
-                sh 'sonar-scanner'
+                echo 'Running SonarScanner...'
+                bat 'sonar-scanner'
             }
         }
+
         stage('Security Scan') {
             steps {
                 echo 'Running security scan...'
