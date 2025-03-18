@@ -3,7 +3,7 @@ pipeline {
     environment {
         STAGING_SERVER = 'staging.example.com'
         PROD_SERVER = 'prod.example.com'
-        EMAIL = 'priyankathukral2004@gmail.com'
+        EMAIL = 'priyanka4800.be23@chitkara.edu.in'
     }
     stages {
         stage('Build') {
