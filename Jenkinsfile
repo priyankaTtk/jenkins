@@ -18,10 +18,10 @@ pipeline {
                 sh 'npm test || exit 1'
             }
         }
-        stage('Code Analysis') {
+         stage('Code Analysis') {
             steps {
-                echo 'Running ESLint...'
-                sh 'npx eslint .'
+                echo 'Performing code analysis...'
+                sh 'sonar-scanner'
             }
         }
         stage('Security Scan') {
