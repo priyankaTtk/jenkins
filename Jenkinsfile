@@ -21,7 +21,10 @@ pipeline {
          stage('Code Analysis') {
             steps {
                 echo 'Running SonarScanner...'
-                bat 'sonar-scanner'
+                withSonarQubeEnv(installationName: 'sq1') {
+                    sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:sonar'
+                    
+                }
             }
         }
 
