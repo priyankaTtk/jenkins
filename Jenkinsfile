@@ -21,9 +21,10 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 echo 'Running SonarScanner...'
-                bat '"D:\\sonar\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat"'
+                bat '"D:\\sonar\\sonar-scanner-7.0.2.4839-windows-x64\\bin\\sonar-scanner.bat" -Dsonar.projectKey=my-project -Dsonar.host.url=%SONAR_HOST_URL% -Dsonar.login=%SONAR_TOKEN%'
             }
         }
+
 
         stage('Security Scan') {
             steps {
