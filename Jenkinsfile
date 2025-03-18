@@ -19,12 +19,12 @@ pipeline {
             }
         }
          stage('Code Analysis') {
+            environment {
+                SONARQUBE_HOST='http://192.168.113.232:9000'
+                SONARQUBE_TOKEN='584f1d20484fc3c68f4a4da655b5466f9a753451'
+            }
             steps {
-                echo 'Running SonarScanner...'
-                withSonarQubeEnv(installationName: 'sq1') {
-                    sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:sonar'
-                    
-                }
+                sh 'sonar-scanner -Dsonar.host.url=$SONARQUBE_HOST -Dsonar.login=$SONARQUBE_TOKEN'
             }
         }
 
