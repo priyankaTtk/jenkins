@@ -51,7 +51,7 @@ pipeline {
     }
     post {
         always {
-            emailext (
+            mail (
                 subject: "Jenkins Pipeline Execution",
                 body: "Pipeline execution complete. Check Jenkins for details.",
                 to: "$EMAIL"
