@@ -10,7 +10,7 @@ pipeline {
             steps {
                 echo 'Building the project...'
                 sh 'npm install'
-                echo 'smth'
+                
             }
         }
         stage('Unit and Integration Tests') {
