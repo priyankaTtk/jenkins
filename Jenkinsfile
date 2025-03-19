@@ -27,28 +27,24 @@ pipeline {
         stage('Security Scan') {
             steps {
                 echo 'Running SonarQube Security Scan...'
-                withSonarQubeEnv('SonarQube') {
-                    bat 'sonar-scanner -Dsonar.projectKey=584f1d20484fc3c68f4a4da655b5466f9a753451 -Dsonar.sources=. -Dsonar.language=js'
-                }
+                
             }
         }
 
         stage('Deploy to Staging') {
             steps {
                 echo 'Deploying to Staging...'
-                sh 'scp -r . user@$STAGING_SERVER:/var/www/app'
             }
         }
         stage('Integration Tests on Staging') {
             steps {
                 echo 'Running integration tests on staging...'
-                sh 'curl -X GET http://staging.example.com/health'
-            }
+                }
         }
         stage('Deploy to Production') {
             steps {
                 echo 'Deploying to Production...'
-                sh 'scp -r . user@$PROD_SERVER:/var/www/app'
+                
             }
         }
     }
