@@ -26,10 +26,13 @@ pipeline {
         }
         stage('Security Scan') {
             steps {
-                echo 'Running security scan...'
-                sh 'trivy filesystem .'
+                echo 'Running SonarQube Security Scan...'
+                withSonarQubeEnv('SonarQube') {
+                    bat 'sonar-scanner -Dsonar.projectKey=my-node-app -Dsonar.sources=. -Dsonar.language=js'
+                }
             }
         }
+
         stage('Deploy to Staging') {
             steps {
                 echo 'Deploying to Staging...'
