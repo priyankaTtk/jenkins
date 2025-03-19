@@ -28,7 +28,7 @@ pipeline {
             steps {
                 echo 'Running SonarQube Security Scan...'
                 withSonarQubeEnv('SonarQube') {
-                    bat 'sonar-scanner -Dsonar.projectKey=my-node-app -Dsonar.sources=. -Dsonar.language=js'
+                    bat 'sonar-scanner -Dsonar.projectKey=584f1d20484fc3c68f4a4da655b5466f9a753451 -Dsonar.sources=. -Dsonar.language=js'
                 }
             }
         }
