@@ -53,7 +53,7 @@ pipeline {
         always {
             mail (
                 subject: "Jenkins Pipeline Execution",
-                body: "Pipeline execution complete. Check Jenkins for details.",
+                body: "Pipeline execution complete. Check Jenkins for details...",
                 to: "$EMAIL"
             )
         }
