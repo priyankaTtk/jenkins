@@ -35,16 +35,19 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 echo 'Deploying to Staging...'
+                echo 'Netlify is one option for deploy'
             }
         }
         stage('Integration Tests on Staging') {
             steps {
                 echo 'Running integration tests on staging...'
+                echo 'Cypress for the npm testing'
                 }
         }
         stage('Deploy to Production') {
             steps {
                 echo 'Deploying to Production...'
+                echo 'AWS'
                 
             }
         }
