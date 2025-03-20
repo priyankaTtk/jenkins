@@ -9,6 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project...'
+                echo 'Priyanka Jenkisfile'
                 sh 'npm install'
                 
             }
