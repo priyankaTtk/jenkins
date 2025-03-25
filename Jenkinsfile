@@ -1,62 +1,69 @@
 pipeline {
     agent any
+
     environment {
         STAGING_SERVER = 'staging.example.com'
         PROD_SERVER = 'prod.example.com'
         EMAIL = 'priyanka4800.be23@chitkara.edu.in'
     }
+
     stages {
         stage('Build') {
             steps {
                 echo 'Starting the build process...'
                 echo 'Using Node.js and npm for dependency management.'
-                sh 'npm install'
+                bat 'npm install'
                 echo 'Build completed successfully.'
             }
         }
+
         stage('Unit and Integration Tests') {
             steps {
                 echo 'Executing unit tests using Jest/Mocha...'
-                sh 'npm test || exit 1'
-                echo 'Unit testing phase completed.'
+                bat 'npm test'
             }
         }
+
         stage('Code Analysis') {
             steps {
                 echo 'Running static code analysis using ESLint...'
-                sh 'npm run lint || exit 1' 
-                echo 'Code analysis completed.'
+                bat 'npm run lint'
             }
         }
+
         stage('Security Scan') {
             steps {
                 echo 'Performing security scan using SonarQube...'
-                echo 'Ensure SonarQube is properly configured and running.'
+                // Add actual SonarQube analysis commands here if needed
             }
         }
+
         stage('Deploy to Staging') {
             steps {
                 echo 'Deploying to Staging Server: $STAGING_SERVER'
-                echo 'Netlify is being used as the deployment service.'
+                bat 'npx netlify-cli deploy --site your-staging-site-id --prod'
             }
         }
+
         stage('Integration Tests on Staging') {
             steps {
                 echo 'Running end-to-end tests using Cypress on Staging...'
-                echo 'Cypress is a JavaScript testing framework for UI automation.'
+                bat 'npx cypress run'
             }
         }
+
         stage('Deploy to Production') {
             steps {
                 echo 'Deploying to Production Server: $PROD_SERVER'
-                echo 'AWS is the chosen cloud provider for production deployment.'
+                bat 'npx netlify-cli deploy --site your-production-site-id --prod'
             }
         }
     }
+
     post {
         always {
             echo 'Sending email notification to $EMAIL'
-            mail (
+            mail(
                 subject: "Jenkins Pipeline Execution",
                 body: "Pipeline execution complete. Check Jenkins for details...",
                 to: "$EMAIL"
