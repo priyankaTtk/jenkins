@@ -1,4 +1,4 @@
-integration: pipeline {
+pipeline {
     agent any
     environment {
         STAGING_SERVER = 'staging.example.com'
