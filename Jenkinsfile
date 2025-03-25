@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Code Analysis') {
             steps {
-                echo 'Running static code analysis using ESLint...'
+                echo 'Running static code analysis using ESLint... the file is created inside myproject to test the code'
                 sh 'npm run lint || exit 1' 
                 echo 'Code analysis completed.'
             }
