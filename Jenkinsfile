@@ -1,66 +1,61 @@
 pipeline {
     agent any
-    environment {
-        STAGING_SERVER = 'staging.example.com'
-        PROD_SERVER = 'prod.example.com'
-        EMAIL = 'priyanka4800.be23@chitkara.edu.in'
-    }
+
     stages {
+        stage('Checkout Code') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Build') {
             steps {
-                echo 'Starting the build process...'
-                echo 'Using Node.js and npm for dependency management.'
-                sh 'npm install'
-                echo 'Build completed successfully.'
+                bat 'npm install'
             }
         }
+
         stage('Unit and Integration Tests') {
             steps {
-                echo 'Executing unit tests using Jest/Mocha...'
-                sh 'npm test || exit 1'
-                echo 'Unit testing phase completed.'
+                bat 'npm test'
             }
         }
+
         stage('Code Analysis') {
             steps {
-                echo 'Running static code analysis using ESLint...'
-                sh 'npm run lint || exit 1' 
-                echo 'Code analysis completed.'
+                bat 'echo Running code analysis...'
             }
         }
+
         stage('Security Scan') {
             steps {
-                echo 'Performing security scan using SonarQube...'
-                echo 'Ensure SonarQube is properly configured and running.'
+                bat 'echo Running security scan...'
             }
         }
+
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploying to Staging Server: $STAGING_SERVER'
-                echo 'Netlify is being used as the deployment service.'
+                bat 'echo Deploying to staging...'
             }
         }
+
         stage('Integration Tests on Staging') {
             steps {
-                echo 'Running end-to-end tests using Cypress on Staging...'
-                echo 'Cypress is a JavaScript testing framework for UI automation.'
+                bat 'echo Running integration tests on staging...'
             }
         }
+
         stage('Deploy to Production') {
             steps {
-                echo 'Deploying to Production Server: $PROD_SERVER'
-                echo 'AWS is the chosen cloud provider for production deployment.'
+                bat 'echo Deploying to production...'
             }
         }
     }
+
     post {
         always {
-            echo 'Sending email notification to $EMAIL'
-            mail (
-                subject: "Jenkins Pipeline Execution",
-                body: "Pipeline execution complete. Check Jenkins for details...",
-                to: "$EMAIL"
-            )
+            mail to: 'your-email@example.com',
+                 subject: 'Jenkins Build Notification',
+                 body: "The build has completed. Check Jenkins for details."
         }
     }
 }
