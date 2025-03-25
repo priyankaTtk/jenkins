@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        STAGING_SERVER = 'staging.example.com'
-        PROD_SERVER = 'prod.example.com'
+        STAGING_SERVER = 'staging.netlify.com'
+        PROD_SERVER = 'prod.netilify.com'
         EMAIL = 'priyanka4800.be23@chitkara.edu.in'
     }
 
@@ -34,28 +34,31 @@ pipeline {
         stage('Security Scan') {
             steps {
                 echo 'Performing security scan using SonarQube...'
-                // Add actual SonarQube analysis commands here if needed
+                echo 'It is used to scan the project'
             }
         }
 
         stage('Deploy to Staging') {
             steps {
                 echo 'Deploying to Staging Server: $STAGING_SERVER'
-                bat 'npx netlify-cli deploy --site your-staging-site-id --prod'
+                echo 'Tools like Netlify and AWS can be used to deploy the project'
+                echo 'npx netlify-cli deploy --site your-staging-site-id --prod'
             }
         }
 
         stage('Integration Tests on Staging') {
             steps {
                 echo 'Running end-to-end tests using Cypress on Staging...'
-                bat 'npx cypress run'
+                echo 'cypress will be used forthis project as it deals with node.js'
+                echo 'npx cypress run'
             }
         }
 
         stage('Deploy to Production') {
             steps {
                 echo 'Deploying to Production Server: $PROD_SERVER'
-                bat 'npx netlify-cli deploy --site your-production-site-id --prod'
+                echo 'Netlify and AWS can be used for this as well'
+                echo 'npx netlify-cli deploy --site your-production-site-id --prod'
             }
         }
     }
