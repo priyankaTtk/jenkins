@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo 'Starting the build process...'
                 echo 'Using Node.js and npm for dependency management.'
+                echo 'New changes'
                 bat 'npm install'
                 echo 'Build completed successfully.'
             }
