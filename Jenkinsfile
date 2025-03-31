@@ -4,7 +4,7 @@ pipeline {
     environment {
         STAGING_SERVER = 'staging.netlify.com'
         PROD_SERVER = 'prod.netilify.com'
-        EMAIL = 'priyanka4800.be23@chitkara.edu.in'
+        EMAIL = 'saravjeet.singh@chitkara.edu.in'
     }
 
     stages {
